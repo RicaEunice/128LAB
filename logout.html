@@ -1,0 +1,12 @@
+{% extends 'store\index.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Logput Page  -->
+<div class = "logout__container">
+<h1 class = "logout__heading"> You have been logged out. </h1><br>
+<a class = "register__login" href="{%url 'login' %}">Login</a>
+</div>
+
+{% endblock content %}

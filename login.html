@@ -1,0 +1,47 @@
+{% extends 'store\index.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Login Page  -->
+
+<div class = "login__container">
+<h1 class = "login__heading"> Login </h1><br>
+<form action = '' method ='post'>
+    {% csrf_token %}
+    <Label class = "login__title" for = "username"> Username </Label><br>
+    <input type = "text" name="username"><br><br>
+    <Label class = "login__title" for = "password"> Password </Label><br>
+    <input type = "password" name="password" id ="Show">
+    <br>
+    <Label> Show Password</Label>
+    <input type = "checkbox" name="" onclick="myFunction()">
+    <br>
+    
+    {% for message in messages %}
+    {{message}}
+    {% endfor %}
+
+
+    <input class= "login__button" type= "submit" value="Login"><br>
+
+
+    </form>   
+<h2 class= "login__instead"> Don't have an account? Sign up instead. </h2>
+<a class= "login__register" href="{%url 'register' %}"> Register </a>
+
+</div>
+<script type = "text/javascript">
+    function myFunction(){
+        var show = document.getElementById('Show');
+        if (show.type == 'password') {
+            show.type = 'text';
+        }
+        else{
+            show.type = 'password';
+        }
+    }
+</script>
+
+
+{% endblock content %}

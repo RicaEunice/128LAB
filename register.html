@@ -1,0 +1,38 @@
+{% extends 'store\index.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Register Page  -->
+
+<div class="register__container">
+    <h1 class= "register__heading"> Register </h1><br>
+    <form action = '' method ='post'>
+        {% csrf_token %}
+        <Label class= "register__title" for "username"> Username </Label><br>
+        {{form.username}}<br><br>
+        <Label class= "register__title" for "password1"> Password </Label><br>
+        {{form.password1}}<br><br>
+        <Label class= "register__title" for "password2"> Confirm Password </Label><br>
+        {{form.password2}}<br>
+    
+
+    {% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            {{ error|escape}}
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        {{error|escape}}
+    {% endfor %}
+    {% endif %} <br>
+
+        <input class = "register__button" type= "submit" value ="Register">
+</form>    
+<h2 class= "register__instead"> Already have an account. Sign in instead. </h2><br>
+<a class = "register__login" href="{%url 'login' %}">Login</a>
+</div>
+
+
+{% endblock content %}

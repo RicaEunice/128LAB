@@ -1,0 +1,30 @@
+{% extends 'store\index.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Shop Page  -->
+ 
+        <div class="product__container">
+            <a href="{%url 'cart' %}">
+                <img id ="cart-icon" src ="{% static 'images/blue_cart.png' %}" align="left">
+            </a>
+            <h1 class="shop__heading"> ALBUMS/SINGLES </h1>
+            
+            
+            <div class="row">
+                {% for product in products %}
+                <div class="col-lg-6">
+                    <img class="product__thumbnail" src="{{product.imageURL}}">
+                    <div class="box-element product">
+                        <h6 style="font-size: 25px"><strong>{{product.name}}</strong></h6>
+                        <hr>
+                        <h5 style="font-size: 15px">{{product.artist}}</h5>
+                        <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+                        <h4 style="display: inline-block; font-size: 20px;">P{{product.price|floatformat:2}}</h4>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+   
+{% endblock content %}
